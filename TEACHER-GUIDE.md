@@ -131,3 +131,31 @@ For the rose, daisy and tulip tests, record:
 3. Data augmentation creates varied training views from existing data.
 4. Augmentation helps the model generalise to new photos.
 5. Validation evidence—not training accuracy alone—shows whether learning transfers.
+
+
+## New scaffold for the harder concepts
+
+### Training and validation datasets
+
+Teach the plain-language roles first:
+
+- **Training = practice and update.**
+- **Validation = check and report.**
+
+Use the animated card split before mentioning `validation_split`. Then run the decision game and the one-epoch stepper.
+
+### Accuracy and loss
+
+Use the three prediction cases. Emphasise that accuracy counts whether the top answer is correct, while loss also reacts to confidence—especially confident mistakes.
+
+### Overfitting
+
+Begin with the memorising-flower demonstration. Only after students see the confidence collapse on tilted, dark and zoomed views should you introduce the graph. Move the epoch slider slowly and watch the train–validation gap.
+
+### Dropout
+
+Start with the helper-team animation. Then use the rate slider. Switch between training and prediction mode so students see that dropout is temporary and active only during training.
+
+### Generalisation
+
+Test every changed flower view with the baseline model first. Then switch to the improved model. The displayed percentages are illustrative teaching values; students should use their own measured results in the practical.

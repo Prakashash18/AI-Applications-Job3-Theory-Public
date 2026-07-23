@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
 <meta name="theme-color" content="#0E1420">
-<meta name="description" content="Animated Job 3 theory lesson for AI Applications: transformations, data augmentation, overfitting, validation, dropout and flower prediction.">
-<title>The AI Photographer · Job 3 Data Augmentation · AI Applications</title>
+<meta name="description" content="Highly interactive Job 3 theory lesson for AI Applications: transformations, training and validation datasets, overfitting, dropout, generalisation and flower prediction.">
+<title>The AI Photographer · Interactive Job 3 Data Augmentation · AI Applications</title>
 <style>
 :root{
   --ink:#0E1420;--ink-2:#131B2B;--panel:#1A2334;--panel-2:#223049;--line:#2A3A55;
@@ -208,6 +208,144 @@ h1,h2,h3{font-family:var(--display)}h1{font-size:clamp(2.65rem,6.5vw,5.2rem);lin
 @media(max-width:900px){.plain-definition,.animation-lesson,.playground-shell,.random-machine{grid-template-columns:1fr}.one-photo-problem{grid-template-columns:1fr}.problem-arrow{transform:rotate(90deg);justify-self:center}.condition-grid{grid-template-columns:1fr 1fr}.factory-layout{grid-template-columns:170px auto 1fr}.factory-output{grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.condition-grid,.safety-pair,.playground-controls{grid-template-columns:1fr}.factory-layout{grid-template-columns:1fr}.factory-arrow strong{transform:rotate(90deg)}.factory-output{grid-template-columns:repeat(2,1fr)}.reveal-formula{grid-template-columns:1fr}.reveal-formula>span{transform:rotate(90deg);justify-self:center}.change-stays{grid-template-columns:1fr}.camera-shell{width:48%}}
 
+
+/* ---------- INTERACTIVE CONCEPT LABS · V2 ---------- */
+.concept-rule{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:center;margin-top:28px}
+.concept-rule>article{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px;min-height:190px}
+.concept-rule>article.training-side{border-color:rgba(52,224,196,.4)}
+.concept-rule>article.validation-side{border-color:rgba(255,126,107,.4)}
+.concept-rule .versus-dot{font-family:var(--display);font-size:2rem;color:var(--faint)}
+.concept-rule header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.concept-rule header span{font-family:var(--mono);font-size:.7rem;letter-spacing:.09em;color:var(--faint)}
+.concept-rule header b{font-size:1.15rem}
+.concept-rule .analogy-icon{font-size:2.8rem;margin-bottom:13px;display:block}
+.concept-rule p{color:var(--muted);line-height:1.48}
+.concept-rule .permission{display:flex;align-items:center;gap:9px;margin-top:14px;padding:10px 11px;border-radius:10px;background:var(--ink-2);font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+.concept-rule .permission strong{color:var(--activate)}
+
+.split-lab{margin-top:24px;display:grid;grid-template-columns:.82fr auto 1.18fr;gap:18px;align-items:center}
+.split-source,.split-bin{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:15px}
+.split-source h3,.split-bin h3{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.split-source h3 span,.split-bin h3 span{font-family:var(--mono);font-size:.66rem;color:var(--faint);font-weight:400}
+.split-source-grid,.split-bin-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;min-height:126px;align-content:start}
+.split-bin-grid{grid-template-columns:repeat(4,1fr)}
+.split-card{display:grid;place-items:center;aspect-ratio:1;border-radius:10px;background:var(--ink-2);border:1px solid var(--line);font-size:1.35rem;position:relative}
+.split-card small{position:absolute;right:4px;bottom:3px;font-family:var(--mono);font-size:.54rem;color:var(--faint)}
+.split-arrow{display:grid;place-items:center;gap:10px;color:var(--muted);text-align:center}
+.split-arrow strong{font-size:2rem;color:var(--activate)}
+.split-actions{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:15px}
+.split-bins{display:grid;grid-template-columns:2fr 1fr;gap:12px}
+.split-bin.train{border-color:rgba(52,224,196,.42)}.split-bin.val{border-color:rgba(255,126,107,.42)}
+.split-bin.train h3 b{color:var(--signal)}.split-bin.val h3 b{color:var(--predict)}
+.split-status{margin-top:14px;text-align:center;color:var(--muted);font-family:var(--mono);font-size:.78rem;min-height:1.5em}
+
+.decision-lab{display:grid;grid-template-columns:1fr .9fr;gap:26px;align-items:center;margin-top:28px}
+.decision-screen{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px;min-height:260px;display:grid;align-content:center}
+.decision-screen .decision-count{font-family:var(--mono);font-size:.7rem;color:var(--faint);letter-spacing:.08em}
+.decision-screen h3{font-size:clamp(1.45rem,2.6vw,2rem);margin:17px 0 11px;line-height:1.25}
+.decision-screen p{color:var(--muted);line-height:1.5}
+.decision-buttons{display:grid;gap:12px}
+.decision-buttons button{display:grid;grid-template-columns:48px 1fr;gap:13px;align-items:center;text-align:left;padding:15px;border-radius:14px;color:var(--text);background:var(--panel);border:1px solid var(--line);cursor:pointer;transition:.2s}
+.decision-buttons button:hover{border-color:var(--signal);transform:translateY(-1px)}
+.decision-buttons button span{display:grid;place-items:center;width:48px;height:48px;border-radius:12px;background:var(--ink-2);font-size:1.5rem}
+.decision-buttons button b,.decision-buttons button small{display:block}.decision-buttons button small{color:var(--muted);margin-top:3px}
+.decision-buttons button.correct{border-color:var(--activate);background:rgba(199,237,79,.08)}
+.decision-buttons button.wrong{border-color:var(--predict);background:rgba(255,126,107,.08);animation:shake .35s}
+.decision-feedback{margin-top:14px;padding:12px 14px;border-left:3px solid var(--activate);background:rgba(199,237,79,.06);border-radius:0 10px 10px 0;color:var(--muted);line-height:1.45;min-height:49px}
+.decision-feedback b{color:var(--activate)}
+
+.ratio-lab{margin-top:26px;display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;align-items:center}
+.ratio-control-panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px}
+.ratio-control-panel label{display:block;font-family:var(--display);font-size:1.2rem;font-weight:600;margin-bottom:13px}
+.ratio-control-panel input[type=range]{width:100%;accent-color:var(--signal)}
+.ratio-ticks{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.66rem;color:var(--faint);margin-top:8px}
+.ratio-code{margin-top:17px;padding:12px;border-radius:10px;background:#0B111C;border:1px solid var(--line);font-family:var(--mono);font-size:.82rem;color:var(--muted)}
+.ratio-code b{color:var(--signal)}
+.ratio-visual-panel{display:grid;gap:16px}
+.ratio-big-numbers{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.ratio-big-numbers article{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}
+.ratio-big-numbers article:first-child{border-color:rgba(52,224,196,.4)}.ratio-big-numbers article:last-child{border-color:rgba(255,126,107,.4)}
+.ratio-big-numbers span{font-family:var(--mono);font-size:.68rem;color:var(--faint)}
+.ratio-big-numbers strong{display:block;font-family:var(--display);font-size:clamp(2.2rem,5vw,3.6rem);margin:7px 0}
+.ratio-big-numbers article:first-child strong{color:var(--signal)}.ratio-big-numbers article:last-child strong{color:var(--predict)}
+.ratio-big-numbers p{color:var(--muted);font-size:.9rem}
+.ratio-bar{height:28px;border-radius:999px;background:rgba(255,126,107,.28);overflow:hidden;border:1px solid var(--line)}
+.ratio-bar i{display:block;height:100%;width:80%;background:var(--signal);transition:width .45s cubic-bezier(.2,.9,.3,1)}
+.ratio-observation{padding:13px 15px;border-radius:12px;background:var(--ink-2);border:1px solid var(--line);color:var(--muted);line-height:1.45}
+
+.epoch-lab{margin-top:26px}
+.epoch-track{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.epoch-step{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:17px;text-align:center;transition:.25s;opacity:.55}
+.epoch-step+.epoch-step::before{content:'→';position:absolute;left:-10px;top:45%;color:var(--faint)}
+.epoch-step.active{opacity:1;border-color:var(--signal);background:rgba(52,224,196,.07);transform:translateY(-3px)}
+.epoch-step.done{opacity:.9;border-color:rgba(199,237,79,.35)}
+.epoch-step .epoch-icon{font-size:2rem;display:block;margin-bottom:9px}.epoch-step b{display:block}.epoch-step small{display:block;color:var(--muted);line-height:1.4;margin-top:5px}
+.epoch-controls{display:flex;justify-content:center;gap:10px;margin-top:18px;flex-wrap:wrap}
+.epoch-readout{margin-top:15px;text-align:center;min-height:52px;color:var(--muted);line-height:1.45}.epoch-readout b{color:var(--activate)}
+.epoch-meters{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:12px}
+.epoch-meters span{font-family:var(--mono);font-size:.72rem;padding:7px 10px;border-radius:999px;background:var(--ink-2);border:1px solid var(--line);color:var(--muted)}
+
+.metric-lab{display:grid;grid-template-columns:.82fr 1.18fr;gap:28px;align-items:center;margin-top:26px}
+.metric-case-buttons{display:grid;gap:10px}
+.metric-case-buttons button{text-align:left;padding:13px 15px;border-radius:13px;border:1px solid var(--line);background:var(--panel);color:var(--text);cursor:pointer;transition:.2s}
+.metric-case-buttons button:hover,.metric-case-buttons button.active{border-color:var(--signal);background:rgba(52,224,196,.07)}
+.metric-case-buttons b,.metric-case-buttons small{display:block}.metric-case-buttons small{color:var(--muted);margin-top:4px}
+.metric-screen{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:21px}
+.metric-truth{display:flex;align-items:center;gap:13px;padding-bottom:15px;border-bottom:1px solid var(--line)}
+.metric-truth span{font-size:2.2rem}.metric-truth b,.metric-truth small{display:block}.metric-truth small{color:var(--muted);margin-top:3px}
+.metric-bars{display:grid;gap:11px;margin:18px 0}
+.metric-row{display:grid;grid-template-columns:88px 1fr 44px;gap:10px;align-items:center}.metric-row i{height:12px;border-radius:999px;background:var(--ink-2);overflow:hidden}.metric-row i b{display:block;height:100%;width:50%;background:var(--line);border-radius:999px;transition:width .45s}.metric-row.correct i b{background:var(--signal)}
+.metric-results{display:grid;grid-template-columns:1fr 1fr;gap:12px}.metric-results article{border-radius:13px;padding:13px;background:var(--ink-2);border:1px solid var(--line)}
+.metric-results span{font-family:var(--mono);font-size:.66rem;color:var(--faint)}.metric-results strong{display:block;font-size:1.4rem;margin-top:5px}.metric-results article:first-child strong{color:var(--signal)}.metric-results article:last-child strong{color:var(--predict)}
+.metric-explain{margin-top:13px;color:var(--muted);line-height:1.45;min-height:44px}
+
+.memory-lab{display:grid;grid-template-columns:.85fr auto 1.15fr;gap:20px;align-items:center;margin-top:26px}
+.memory-photo{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:13px;text-align:center}.memory-photo .flower-visual{max-width:300px;margin:auto}.memory-photo b{display:block;margin-top:10px}.memory-photo small{display:block;color:var(--muted);margin-top:4px}
+.memory-arrow{font-size:2rem;color:var(--faint)}
+.memory-model{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:20px}
+.memory-model h3{margin-bottom:12px}.memory-test-buttons{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:16px}.memory-test-buttons button{padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:var(--ink-2);color:var(--text);cursor:pointer}.memory-test-buttons button.active{border-color:var(--signal);color:var(--signal)}
+.memory-result{display:grid;grid-template-columns:90px 1fr;gap:12px;align-items:center}.memory-result .flower-visual{width:90px}.memory-result b,.memory-result span{display:block}.memory-result span{color:var(--muted);margin-top:4px}.memory-confidence{margin-top:13px;height:14px;background:var(--ink-2);border-radius:999px;overflow:hidden}.memory-confidence i{display:block;height:100%;width:98%;background:var(--signal);transition:width .45s;border-radius:999px}
+.memory-message{margin-top:12px;color:var(--muted);line-height:1.45;min-height:44px}
+
+.overfit-lab{display:grid;grid-template-columns:.72fr 1.28fr;gap:24px;align-items:center;margin-top:23px}
+.overfit-controls{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:19px}.overfit-controls label{display:block;font-family:var(--display);font-size:1.15rem;font-weight:600}.overfit-controls input{width:100%;margin:18px 0 8px;accent-color:var(--signal)}
+.overfit-epoch{font-family:var(--display);font-size:3rem;color:var(--signal)}
+.overfit-status{margin-top:14px;padding:12px;border-radius:11px;background:var(--ink-2);border:1px solid var(--line);color:var(--muted);line-height:1.45;min-height:84px}.overfit-status b{color:var(--activate)}
+.overfit-plot{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:14px}.overfit-plot svg{width:100%;height:auto;display:block}.overfit-grid{stroke:#26364E;stroke-width:1}.overfit-axis{stroke:var(--faint);stroke-width:1.3;fill:none}.overfit-train{stroke:var(--signal);stroke-width:4;fill:none}.overfit-val{stroke:var(--predict);stroke-width:4;fill:none}.overfit-marker{fill:var(--activate);stroke:var(--ink);stroke-width:3}.overfit-gap{stroke:var(--activate);stroke-width:2;stroke-dasharray:4 5}
+.overfit-metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.overfit-metrics span{padding:9px;border-radius:9px;background:var(--ink-2);font-family:var(--mono);font-size:.72rem;color:var(--muted)}.overfit-metrics b{float:right}.overfit-metrics span:first-child b{color:var(--signal)}.overfit-metrics span:last-child b{color:var(--predict)}
+
+.dropout-story{display:grid;grid-template-columns:.85fr 1.15fr;gap:28px;align-items:center;margin-top:27px}
+.dropout-analogy{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:20px}.dropout-analogy .helper-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:18px 0}.helper{aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:rgba(138,123,247,.16);border:2px solid var(--struct);font-size:1.25rem;transition:.25s}.helper.off{opacity:.2;border-style:dashed;transform:scale(.82)}
+.dropout-analogy p{color:var(--muted);line-height:1.5}.dropout-round{font-family:var(--mono);font-size:.73rem;color:var(--faint);min-height:1.5em;margin-top:12px}
+.dropout-explain{display:grid;gap:13px}.dropout-explain article{display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:start;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:15px}.dropout-explain article span{display:grid;place-items:center;width:38px;height:38px;border-radius:10px;background:var(--ink-2);color:var(--activate);font-weight:700}.dropout-explain article b{display:block}.dropout-explain article p{color:var(--muted);line-height:1.42;margin-top:4px}
+
+.dropout-lab{display:grid;grid-template-columns:.72fr 1.28fr;gap:25px;align-items:center;margin-top:25px}
+.dropout-controls{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px}.dropout-controls label{display:block;font-family:var(--display);font-size:1.15rem;font-weight:600}.dropout-controls input{width:100%;margin:18px 0 8px;accent-color:var(--struct)}
+.dropout-rate{font-family:var(--display);font-size:3rem;color:var(--struct)}
+.dropout-mode-buttons{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:15px}.dropout-mode-buttons button{padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--ink-2);color:var(--text);cursor:pointer}.dropout-mode-buttons button.active{border-color:var(--struct);color:var(--struct);background:rgba(138,123,247,.08)}
+.dropout-lab-network{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px;display:grid;grid-template-columns:repeat(5,1fr);gap:15px;min-height:260px;align-content:center}.dropout-lab-network i{aspect-ratio:1;border-radius:50%;background:rgba(138,123,247,.18);border:2px solid var(--struct);position:relative;transition:.25s}.dropout-lab-network i::after{content:'';position:absolute;inset:28%;border-radius:50%;background:var(--struct);opacity:.75}.dropout-lab-network i.off{opacity:.16;border-style:dashed;transform:scale(.75)}.dropout-lab-network i.off::after{content:'×';inset:0;display:grid;place-items:center;background:none;color:var(--predict);font-style:normal;font-weight:700;font-size:1.1rem;opacity:1}
+.dropout-lab-message{grid-column:1/-1;text-align:center;color:var(--muted);line-height:1.45;min-height:44px}
+
+.generalisation-lab{display:grid;grid-template-columns:.72fr 1.28fr;gap:25px;align-items:center;margin-top:25px}
+.general-controls{display:grid;gap:13px}.general-control-group{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:15px}.general-control-group span{display:block;font-family:var(--mono);font-size:.68rem;color:var(--faint);margin-bottom:10px}.general-control-group div{display:flex;gap:8px;flex-wrap:wrap}.general-control-group button{padding:9px 11px;border-radius:10px;border:1px solid var(--line);background:var(--ink-2);color:var(--text);cursor:pointer}.general-control-group button.active{border-color:var(--signal);color:var(--signal);background:rgba(52,224,196,.07)}
+.general-screen{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:20px;display:grid;grid-template-columns:230px 1fr;gap:20px;align-items:center}.general-screen .flower-visual{width:230px;max-width:100%}.general-result h3{font-size:1.5rem;margin-bottom:8px}.general-result p{color:var(--muted);line-height:1.45}.general-score{font-family:var(--display);font-size:clamp(3rem,6vw,4.6rem);color:var(--signal);margin:12px 0 3px}.general-score.low{color:var(--predict)}.general-bar{height:14px;border-radius:999px;background:var(--ink-2);overflow:hidden}.general-bar i{display:block;height:100%;width:50%;background:var(--signal);border-radius:999px;transition:width .45s,background .3s}.general-message{margin-top:12px;color:var(--muted);line-height:1.45;min-height:46px}
+
+.btn.secondary{background:var(--panel);color:var(--text);border:1px solid var(--line)}
+.chart-svg .curve{stroke-dasharray:1200;stroke-dashoffset:1200}
+.slide.is-active .chart-svg .train-line{animation:drawEvidence 1.6s .15s ease forwards}
+.slide.is-active .chart-svg .val-line{animation:drawEvidence 1.6s .65s ease forwards}
+@keyframes drawEvidence{to{stroke-dashoffset:0}}
+
+@media(max-width:900px){
+  .concept-rule,.split-lab,.decision-lab,.ratio-lab,.metric-lab,.memory-lab,.overfit-lab,.dropout-story,.dropout-lab,.generalisation-lab{grid-template-columns:1fr}
+  .concept-rule .versus-dot,.memory-arrow,.split-arrow strong{transform:rotate(90deg);justify-self:center}
+  .split-bins{grid-template-columns:1fr 1fr}.epoch-track{grid-template-columns:1fr 1fr}.epoch-step:nth-child(3)::before{display:none}.general-screen{grid-template-columns:190px 1fr}
+}
+@media(max-width:620px){
+  .split-bins,.ratio-big-numbers,.metric-results,.dropout-mode-buttons,.general-screen{grid-template-columns:1fr}.split-source-grid,.split-bin-grid{grid-template-columns:repeat(5,1fr)}
+  .epoch-track{grid-template-columns:1fr}.epoch-step+.epoch-step::before{content:'↓';left:50%;top:-13px}.general-screen .flower-visual{width:100%}.decision-buttons button{grid-template-columns:42px 1fr}.decision-buttons button span{width:42px;height:42px}
+}
+
 </style>
 </head>
 <body>
@@ -361,47 +499,124 @@ h1,h2,h3{font-family:var(--display)}h1{font-size:clamp(2.65rem,6.5vw,5.2rem);lin
 </section>
 
 
-<section class="slide" data-title="Training versus validation" data-section="Workflow">
+<section class="slide" data-title="Training and validation: first idea" data-section="Workflow">
   <div class="inner">
-    <div class="eyebrow"><span class="num">15</span><span class="sec">Two different jobs</span></div>
-    <h2>Training learns. Validation checks.</h2>
-    <div class="lane-grid">
-      <article class="lane training">
-        <header><span>TRAINING SET</span><b>practice bench</b></header>
-        <div class="lane-flow"><div class="flower-visual rotate" data-flower="sunflower"></div><span>→</span><div class="augment-chip">augmentation ON</div><span>→</span><div class="cnn-box">CNN updates</div></div>
-        <p>The model uses these examples to adjust its weights.</p>
+    <div class="eyebrow"><span class="num">15</span><span class="sec">Start with two simple jobs</span></div>
+    <h2>Training is <span class="accent">practice.</span><br>Validation is a <span class="accent-3">check.</span></h2>
+    <div class="concept-rule">
+      <article class="training-side">
+        <header><b>Training dataset</b><span>PRACTICE BOOK</span></header>
+        <span class="analogy-icon">📝</span>
+        <p>The model studies these flower images again and again. After each mistake, it adjusts its internal weights.</p>
+        <div class="permission"><strong>CAN</strong><span>change the model</span></div>
       </article>
-      <article class="lane validation">
-        <header><span>VALIDATION SET</span><b>check bench</b></header>
-        <div class="lane-flow"><div class="flower-visual" data-flower="sunflower"></div><span>→</span><div class="augment-chip off">augmentation OFF</div><span>→</span><div class="cnn-box">measure only</div></div>
-        <p>Validation estimates performance on clean, unseen examples.</p>
+      <div class="versus-dot">≠</div>
+      <article class="validation-side">
+        <header><b>Validation dataset</b><span>MOCK TEST</span></header>
+        <span class="analogy-icon">✅</span>
+        <p>The model tries different flower images. We measure the result, but these images do not teach the model.</p>
+        <div class="permission"><strong>CANNOT</strong><span>change the model</span></div>
       </article>
     </div>
-    <div class="note"><b>Keras model behaviour:</b> random augmentation layers run during training and are inactive for evaluation or prediction.</div>
-    <aside class="teacher-note"><b>Teacher prompt</b><span>Use the analogy: practice can be varied, but the check bench must give a stable measurement.</span></aside>
+    <div class="rule-strip"><b>KEEP THEM SEPARATE</b><span>an image belongs to training or validation—not both</span></div>
+    <aside class="teacher-note"><b>Teacher prompt</b><span>Use a test analogy: practice questions may teach you; a mock test should reveal what you can do without showing the answers first.</span></aside>
   </div>
 </section>
 
+
+<section class="slide" data-title="Split one dataset into two" data-section="Workflow">
+  <div class="inner">
+    <div class="eyebrow"><span class="num">16</span><span class="sec">Watch the split happen</span></div>
+    <h2>One flower collection becomes<br><span class="accent">two separate groups.</span></h2>
+    <div class="split-lab" id="splitLab">
+      <div class="split-source">
+        <h3><b>All images</b><span>10 flower cards</span></h3>
+        <div class="split-source-grid" id="splitSource">
+          <div class="split-card"><span>🌻</span><small>01</small></div><div class="split-card"><span>🌹</span><small>02</small></div><div class="split-card"><span>🌼</span><small>03</small></div><div class="split-card"><span>🌷</span><small>04</small></div><div class="split-card"><span>🌻</span><small>05</small></div>
+          <div class="split-card"><span>🌼</span><small>06</small></div><div class="split-card"><span>🌹</span><small>07</small></div><div class="split-card"><span>🌷</span><small>08</small></div><div class="split-card"><span>🌻</span><small>09</small></div><div class="split-card"><span>🌼</span><small>10</small></div>
+        </div>
+      </div>
+      <div class="split-arrow"><strong>→</strong><span>random<br>80 / 20 split</span></div>
+      <div class="split-bins">
+        <div class="split-bin train"><h3><b>Training</b><span>8 cards</span></h3><div class="split-bin-grid" id="trainBin"></div></div>
+        <div class="split-bin val"><h3><b>Validation</b><span>2 cards</span></h3><div class="split-bin-grid" id="valBin"></div></div>
+      </div>
+    </div>
+    <div class="split-actions"><button class="btn" id="splitBtn">Split 80 / 20</button><button class="btn secondary" id="splitResetBtn">Put cards back</button></div>
+    <div class="split-status" id="splitStatus" aria-live="polite">Press “Split 80 / 20” to create the two datasets.</div>
+    <aside class="teacher-note"><b>Teacher prompt</b><span>Ask: “Did we create new flower images?” No. We only divided the existing images into two groups with different jobs.</span></aside>
+  </div>
+</section>
+
+<section class="slide" data-title="Training or validation decision game" data-section="Workflow">
+  <div class="inner">
+    <div class="eyebrow quiz-eb"><span class="num">🤔</span><span class="sec">You decide which dataset does the job</span></div>
+    <h2>Who is allowed to do this?</h2>
+    <div class="decision-lab" id="decisionLab">
+      <div class="decision-screen">
+        <span class="decision-count" id="decisionCount">TASK 1 OF 5</span>
+        <h3 id="decisionPrompt">Adjust the CNN weights after a wrong guess.</h3>
+        <p id="decisionHint">Choose the dataset whose examples are used for learning.</p>
+        <div class="decision-feedback" id="decisionFeedback" aria-live="polite">Choose Training or Validation.</div>
+      </div>
+      <div>
+        <div class="decision-buttons">
+          <button data-choice="training"><span>📝</span><div><b>Training dataset</b><small>practice and update</small></div></button>
+          <button data-choice="validation"><span>✅</span><div><b>Validation dataset</b><small>check and report</small></div></button>
+        </div>
+        <button class="btn secondary" id="decisionNext" style="margin-top:12px" disabled>Next task →</button>
+      </div>
+    </div>
+    <aside class="teacher-note"><b>Teacher prompt</b><span>Ask students to answer aloud before clicking. Repeat the core rule: training updates; validation measures.</span></aside>
+  </div>
+</section>
 
 <section class="slide" data-title="Training and validation ratios" data-section="Workflow">
   <div class="inner">
-    <div class="eyebrow"><span class="num">16</span><span class="sec">Split the dataset</span></div>
-    <h2>How much data should learn—and how much should check?</h2>
-    <p class="body muted top-gap">The Job Sheet uses <strong>80% training / 20% validation</strong>, then asks you to compare 90/10 and 70/30.</p>
-    <div class="ratio-demo" id="ratioDemo">
-      <div class="ratio-controls" role="group" aria-label="Choose a training validation ratio">
-        <button data-train="9">90 / 10</button>
-        <button data-train="8" class="active">80 / 20</button>
-        <button data-train="7">70 / 30</button>
+    <div class="eyebrow"><span class="num">18</span><span class="sec">Change the split and watch the trade-off</span></div>
+    <h2>How many images practise?<br>How many images check?</h2>
+    <div class="ratio-lab" id="ratioLabV2">
+      <div class="ratio-control-panel">
+        <label for="ratioSlider">Training percentage</label>
+        <input id="ratioSlider" type="range" min="70" max="90" step="10" value="80">
+        <div class="ratio-ticks"><span>70%</span><span>80%</span><span>90%</span></div>
+        <div class="ratio-code">validation_split = <b id="ratioCode">0.2</b></div>
+        <p class="micro-note">Move the slider. Assume the full dataset contains 100 images.</p>
       </div>
-      <div class="ratio-tiles"><div class="ratio-tile" data-index="0"><span>🌼</span><small></small></div><div class="ratio-tile" data-index="1"><span>🌼</span><small></small></div><div class="ratio-tile" data-index="2"><span>🌼</span><small></small></div><div class="ratio-tile" data-index="3"><span>🌼</span><small></small></div><div class="ratio-tile" data-index="4"><span>🌼</span><small></small></div><div class="ratio-tile" data-index="5"><span>🌼</span><small></small></div><div class="ratio-tile" data-index="6"><span>🌼</span><small></small></div><div class="ratio-tile" data-index="7"><span>🌼</span><small></small></div><div class="ratio-tile" data-index="8"><span>🌼</span><small></small></div><div class="ratio-tile" data-index="9"><span>🌼</span><small></small></div></div>
-      <div class="ratio-readout"><b id="ratioTitle">8 training · 2 validation</b><span id="ratioText">A common balance: enough examples to learn and enough examples to check.</span></div>
+      <div class="ratio-visual-panel">
+        <div class="ratio-big-numbers">
+          <article><span>TRAINING · PRACTICE</span><strong id="ratioTrainCount">80</strong><p>images can update the model</p></article>
+          <article><span>VALIDATION · CHECK</span><strong id="ratioValCount">20</strong><p>images measure unseen performance</p></article>
+        </div>
+        <div class="ratio-bar" aria-label="Visual training and validation split"><i id="ratioBarFill"></i></div>
+        <div class="ratio-observation" id="ratioObservation" aria-live="polite">80/20 is a common balance: enough practice and enough checking.</div>
+      </div>
     </div>
-    <div class="note coral"><b>No ratio is automatically best.</b> Keep the model, seed and epochs the same so the comparison is fair.</div>
-    <aside class="teacher-note"><b>Teacher prompt</b><span>Ask: “What do we gain and lose with 90/10?” Expected: more training examples, but a smaller validation sample.</span></aside>
+    <div class="note coral"><b>A ratio is not a magic answer.</b> In the practical, keep the model, seed and epochs the same, then compare the validation results fairly.</div>
+    <aside class="teacher-note"><b>Teacher prompt</b><span>At 90/10, ask what improves and what becomes weaker. Expected: more training examples, but the check uses fewer examples.</span></aside>
   </div>
 </section>
 
+
+<section class="slide" data-title="What happens in one epoch" data-section="Workflow">
+  <div class="inner">
+    <div class="eyebrow"><span class="num">19</span><span class="sec">One complete learning round</span></div>
+    <h2>Training teaches first.<br>Validation checks afterwards.</h2>
+    <div class="epoch-lab" id="epochLab">
+      <div class="epoch-track">
+        <article class="epoch-step active"><span class="epoch-icon">🌻</span><b>1 · Training batch</b><small>Show practice images to the CNN.</small></article>
+        <article class="epoch-step"><span class="epoch-icon">🤔</span><b>2 · Make guesses</b><small>The CNN predicts flower labels.</small></article>
+        <article class="epoch-step"><span class="epoch-icon">🔧</span><b>3 · Update weights</b><small>Use training mistakes to adjust.</small></article>
+        <article class="epoch-step"><span class="epoch-icon">✅</span><b>4 · Validation check</b><small>Measure new images. Do not update.</small></article>
+      </div>
+      <div class="epoch-controls"><button class="btn" id="epochNext">Next step →</button><button class="btn secondary" id="epochReset">Restart epoch</button></div>
+      <div class="epoch-readout" id="epochReadout" aria-live="polite"><b>Step 1:</b> the model receives training images.</div>
+      <div class="epoch-meters"><span id="epochTrainMeter">training accuracy: waiting</span><span id="epochValMeter">validation accuracy: waiting</span></div>
+    </div>
+    <div class="rule-strip"><b>ONE EPOCH</b><span>one full pass through the training data, followed by a validation measurement</span></div>
+    <aside class="teacher-note"><b>Teacher prompt</b><span>Press through the four stages slowly. Ask at which step the model is allowed to change. Answer: step 3, using training data.</span></aside>
+  </div>
+</section>
 
 <section class="slide" data-title="Part 1 baseline workflow" data-section="Workflow">
   <div class="inner">
@@ -458,6 +673,31 @@ model = Sequential([
 </section>
 
 
+<section class="slide" data-title="Accuracy and loss: simple difference" data-section="Evidence">
+  <div class="inner">
+    <div class="eyebrow"><span class="num">22</span><span class="sec">Two ways to describe performance</span></div>
+    <h2>Accuracy asks “correct?”<br>Loss asks “how wrong?”</h2>
+    <div class="metric-lab" id="metricLab">
+      <div class="metric-case-buttons">
+        <button data-case="unsure" class="active"><b>Case A · Correct but unsure</b><small>Sunflower 51% · Rose 49%</small></button>
+        <button data-case="sure"><b>Case B · Correct and sure</b><small>Sunflower 99% · Rose 1%</small></button>
+        <button data-case="wrong"><b>Case C · Wrong and very sure</b><small>Sunflower 1% · Rose 99%</small></button>
+      </div>
+      <div class="metric-screen">
+        <div class="metric-truth"><span>🌻</span><div><b>Correct answer: sunflower</b><small>The real label does not change.</small></div></div>
+        <div class="metric-bars">
+          <div class="metric-row correct"><span>sunflower</span><i><b id="metricSunBar"></b></i><strong id="metricSunPct">51%</strong></div>
+          <div class="metric-row"><span>rose</span><i><b id="metricRoseBar"></b></i><strong id="metricRosePct">49%</strong></div>
+        </div>
+        <div class="metric-results"><article><span>ACCURACY POINT</span><strong id="metricAccuracy">1</strong></article><article><span>LOSS PENALTY</span><strong id="metricLoss">medium</strong></article></div>
+        <div class="metric-explain" id="metricExplain">The top answer is correct, so accuracy gives one point. The model is only slightly sure, so loss is not as low as Case B.</div>
+      </div>
+    </div>
+    <div class="note"><b>Simple classroom rule:</b> accuracy counts correct answers; loss gives a bigger penalty for confident mistakes.</div>
+    <aside class="teacher-note"><b>Teacher prompt</b><span>Compare A and B: both are correct, but B has lower loss because the model is more confident in the correct label. Then show C.</span></aside>
+  </div>
+</section>
+
 <section class="slide" data-title="How to read training curves" data-section="Evidence">
   <div class="inner">
     <div class="eyebrow"><span class="num">19</span><span class="sec">Read the evidence</span></div>
@@ -476,6 +716,57 @@ model = Sequential([
   </div>
 </section>
 
+
+<section class="slide" data-title="Overfitting starts as memorising" data-section="Evidence">
+  <div class="inner">
+    <div class="eyebrow"><span class="num">24</span><span class="sec">First understand the behaviour</span></div>
+    <h2>The model remembers one neat photo<br>instead of learning <span class="accent-3">sunflower clues.</span></h2>
+    <div class="memory-lab" id="memoryLab">
+      <div class="memory-photo"><div class="flower-visual" data-flower="sunflower"></div><b>Training photo</b><small>upright · bright · centred</small></div>
+      <div class="memory-arrow">→</div>
+      <div class="memory-model">
+        <h3>Test the memorising model</h3>
+        <div class="memory-test-buttons"><button data-view="same" class="active">Exact photo</button><button data-view="tilt">Tilted</button><button data-view="dark">Darker</button><button data-view="crop">Zoomed</button></div>
+        <div class="memory-result"><div class="flower-visual" id="memoryTestFlower" data-flower="sunflower"></div><div><b id="memoryLabel">Prediction: sunflower</b><span id="memoryPct">98% confidence</span></div></div>
+        <div class="memory-confidence"><i id="memoryBar"></i></div>
+        <div class="memory-message" id="memoryMessage">The exact training photo looks familiar, so the memorising model scores very highly.</div>
+      </div>
+    </div>
+    <div class="rule-strip"><b>OVERFITTING</b><span>excellent on familiar training examples, weak on different unseen examples</span></div>
+    <aside class="teacher-note"><b>Teacher prompt</b><span>Click the unseen views. Ask: “Is it still a sunflower?” Yes. The model fails because it learned the photo, not the broader pattern.</span></aside>
+  </div>
+</section>
+
+<section class="slide" data-title="Watch overfitting grow by epoch" data-section="Evidence">
+  <div class="inner">
+    <div class="eyebrow"><span class="num">25</span><span class="sec">Move through the training epochs</span></div>
+    <h2>More training is useful—<br>until the validation result stops improving.</h2>
+    <div class="overfit-lab" id="overfitLab">
+      <div class="overfit-controls">
+        <label for="overfitSlider">Current epoch</label>
+        <input id="overfitSlider" type="range" min="1" max="10" step="1" value="1">
+        <div class="overfit-epoch">Epoch <span id="overfitEpoch">1</span></div>
+        <button class="btn" id="overfitPlay" style="margin-top:12px">▶ Play epochs</button>
+        <div class="overfit-status" id="overfitStatus"><b>Early learning:</b> both training and validation improve.</div>
+      </div>
+      <div class="overfit-plot">
+        <svg viewBox="0 0 520 280" role="img" aria-label="Interactive training and validation accuracy across ten epochs">
+          <g class="overfit-grid"><path d="M50 30H490M50 85H490M50 140H490M50 195H490M50 250H490"/><path d="M50 30V250M99 30V250M148 30V250M197 30V250M246 30V250M295 30V250M344 30V250M393 30V250M442 30V250M490 30V250"/></g>
+          <path class="overfit-axis" d="M50 25V250H495"/>
+          <path class="overfit-train" id="overfitTrainPath" d=""/>
+          <path class="overfit-val" id="overfitValPath" d=""/>
+          <line class="overfit-gap" id="overfitGapLine" x1="50" x2="50" y1="200" y2="200"/>
+          <circle class="overfit-marker" id="overfitTrainMarker" cx="50" cy="200" r="7"/>
+          <circle class="overfit-marker" id="overfitValMarker" cx="50" cy="200" r="7"/>
+          <g class="axis-labels"><text x="13" y="35">100%</text><text x="19" y="145">70%</text><text x="19" y="253">40%</text><text x="50" y="272">1</text><text x="476" y="272">10</text></g>
+        </svg>
+        <div class="overfit-metrics"><span>training accuracy <b id="overfitTrainValue">45%</b></span><span>validation accuracy <b id="overfitValValue">43%</b></span></div>
+      </div>
+    </div>
+    <div class="note coral"><b>Watch the gap.</b> When training keeps rising but validation stalls or falls, the model is fitting training details too closely.</div>
+    <aside class="teacher-note"><b>Teacher prompt</b><span>Pause around the best validation epoch, then continue. Ask why the highest training accuracy is not automatically the best model.</span></aside>
+  </div>
+</section>
 
 <section class="slide" data-title="Overfitting before augmentation" data-section="Evidence">
   <div class="inner">
@@ -600,6 +891,52 @@ model = Sequential([
 </section>
 
 
+<section class="slide" data-title="Dropout: the helper-team idea" data-section="Foundations">
+  <div class="inner">
+    <div class="eyebrow"><span class="num">31</span><span class="sec">Understand the job before the code</span></div>
+    <h2>Do not let the network depend<br>on one favourite <span class="accent-4">helper.</span></h2>
+    <div class="dropout-story" id="dropoutStory">
+      <div class="dropout-analogy">
+        <h3>Feature helper team</h3>
+        <div class="helper-row" id="helperRow"><i class="helper">👁️</i><i class="helper">〰</i><i class="helper">◐</i><i class="helper">▦</i><i class="helper">✳</i></div>
+        <p>During one training round, dropout temporarily asks some helpers to rest. The remaining helpers must still solve the task together.</p>
+        <button class="btn" id="dropoutRoundBtn" style="margin-top:15px">Run another training round</button>
+        <div class="dropout-round" id="dropoutRoundText" aria-live="polite">All helpers are ready.</div>
+      </div>
+      <div class="dropout-explain">
+        <article><span>1</span><div><b>Temporary</b><p>The helpers are not deleted. Different ones may rest on the next batch.</p></div></article>
+        <article><span>2</span><div><b>Training only</b><p>Dropout is active while learning, not during validation or prediction.</p></div></article>
+        <article><span>3</span><div><b>Shared learning</b><p>The model becomes less dependent on a small set of activations.</p></div></article>
+      </div>
+    </div>
+    <div class="rule-strip"><b>DROPOUT</b><span>randomly ignore a fraction of activations during training</span></div>
+    <aside class="teacher-note"><b>Teacher prompt</b><span>Click several rounds. Emphasise: the neurons are temporarily inactive, not removed from the trained model.</span></aside>
+  </div>
+</section>
+
+<section class="slide" data-title="Interactive dropout lab" data-section="Foundations">
+  <div class="inner">
+    <div class="eyebrow"><span class="num">32</span><span class="sec">Change the rate and mode</span></div>
+    <h2>What does <code>Dropout(0.2)</code> look like?</h2>
+    <div class="dropout-lab" id="dropoutLabV2">
+      <div class="dropout-controls">
+        <label for="dropoutRateSlider">Dropout rate</label>
+        <input id="dropoutRateSlider" type="range" min="0" max="0.5" step="0.1" value="0.2">
+        <div class="dropout-rate" id="dropoutRateText">0.2</div>
+        <p class="micro-note">A rate of 0.2 means roughly 20% of activations are ignored in each training pass.</p>
+        <div class="dropout-mode-buttons"><button data-mode="training" class="active">Training mode</button><button data-mode="prediction">Prediction mode</button></div>
+        <button class="btn secondary" id="dropoutRefresh" style="margin-top:10px">New random pattern</button>
+      </div>
+      <div class="dropout-lab-network" id="dropoutNetwork" aria-label="Twenty model activations">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        <div class="dropout-lab-message" id="dropoutLabMessage" aria-live="polite">Training mode: about 4 of 20 activations are temporarily off.</div>
+      </div>
+    </div>
+    <div class="note"><b>Important:</b> validation and prediction use the complete network. Dropout is a training behaviour.</div>
+    <aside class="teacher-note"><b>Teacher prompt</b><span>Switch to prediction mode. Ask why all nodes return: we want the complete learned network when checking or using the model.</span></aside>
+  </div>
+</section>
+
 <section class="slide" data-title="Add augmentation and dropout" data-section="Code">
   <div class="inner two code-slide">
     <div>
@@ -691,6 +1028,25 @@ model = Sequential([
   </div>
 </section>
 
+
+<section class="slide" data-title="Generalisation challenge" data-section="Evidence">
+  <div class="inner">
+    <div class="eyebrow"><span class="num">37</span><span class="sec">Test new camera conditions</span></div>
+    <h2>Which model handles<br>new flower views better?</h2>
+    <div class="generalisation-lab" id="generalLab">
+      <div class="general-controls">
+        <div class="general-control-group"><span>CHOOSE MODEL</span><div><button data-model="baseline" class="active">Baseline</button><button data-model="improved">Augmentation + dropout</button></div></div>
+        <div class="general-control-group"><span>CHOOSE UNSEEN PHOTO</span><div><button data-view="upright" class="active">Upright</button><button data-view="tilt">Tilted</button><button data-view="dark">Darker</button><button data-view="zoom">Zoomed</button></div></div>
+      </div>
+      <div class="general-screen">
+        <div class="flower-visual" id="generalFlower" data-flower="sunflower"></div>
+        <div class="general-result"><h3 id="generalTitle">Baseline model</h3><p id="generalViewText">Testing an upright flower.</p><div class="general-score" id="generalScore">96%</div><div class="general-bar"><i id="generalBar"></i></div><div class="general-message" id="generalMessage">The familiar upright view is easy. Now try a tilted, darker or zoomed photo.</div></div>
+      </div>
+    </div>
+    <div class="rule-strip"><b>GENERALISATION</b><span>perform well on new examples that were not used to update the model</span></div>
+    <aside class="teacher-note"><b>Teacher prompt</b><span>Try all unseen views with the baseline, then switch models. Stress that the numbers are illustrative; the lesson is the pattern of stronger performance across changed views.</span></aside>
+  </div>
+</section>
 
 <section class="slide" data-title="Evaluate the model responsibly" data-section="Evidence">
   <div class="inner">
@@ -924,7 +1280,7 @@ print(
     else if((e.key==='o'||e.key==='O')&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName))openOverview();
   });
 
-  var x0=null,y0=null,blocked=false;var exclusions='button,a,pre,.ratio-controls,.overview,.random-batch,.table-scroll,.bridge-flow,.pipeline,.checklist-flow,.playground-shell,.random-machine';
+  var x0=null,y0=null,blocked=false;var exclusions='button,a,input,pre,.ratio-controls,.overview,.random-batch,.table-scroll,.bridge-flow,.pipeline,.checklist-flow,.playground-shell,.random-machine,.split-lab,.decision-lab,.ratio-lab,.epoch-lab,.metric-lab,.memory-lab,.overfit-lab,.dropout-story,.dropout-lab,.generalisation-lab';
   track.addEventListener('touchstart',function(e){if(e.touches.length!==1)return;x0=e.touches[0].clientX;y0=e.touches[0].clientY;blocked=!!(e.target.closest&&e.target.closest(exclusions))},{passive:true});
   track.addEventListener('touchend',function(e){if(x0===null||!e.changedTouches.length)return;var dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;if(!blocked&&Math.abs(dx)>55&&Math.abs(dx)>Math.abs(dy)*1.35)go(i+(dx<0?1:-1));x0=y0=null;blocked=false},{passive:true});
 
@@ -974,6 +1330,106 @@ print(
   var stage=document.getElementById('randomStage'),recipe=document.getElementById('randomRecipe'),randomButton=document.getElementById('randomViewBtn'),flash=document.getElementById('randomFlash'),randomTouched=false;
   function makeRandomView(fromClick){if(!stage)return;var art=clearVisual(stage),angle=Math.round(Math.random()*30-15),scale=.88+Math.random()*.34,flip=Math.random()>.55?-1:1,bright=.78+Math.random()*.38,contrast=.9+Math.random()*.26,noise=Math.random()>.68,dx=Math.random()*9-4.5,dy=Math.random()*7-3.5;art.style.transform='translate('+dx.toFixed(1)+'%,'+dy.toFixed(1)+'%) rotate('+angle+'deg) scale('+scale.toFixed(2)+') scaleX('+flip+')';art.style.filter='brightness('+bright.toFixed(2)+') contrast('+contrast.toFixed(2)+')';if(noise)stage.classList.add('noise');if(recipe){var chips=[];chips.push('<b>rotate '+(angle>0?'+':'')+angle+'°</b>');chips.push('<b>zoom '+scale.toFixed(2)+'×</b>');chips.push('<b>'+(flip===-1?'flipped':'not flipped')+'</b>');chips.push('<b>'+(bright<.91?'darker':bright>1.08?'brighter':'normal light')+'</b>');if(noise)chips.push('<b>noise added</b>');recipe.innerHTML=chips.join('')}if(flash){flash.classList.remove('fire');void flash.offsetWidth;flash.classList.add('fire')}if(fromClick)randomTouched=true}
   if(randomButton)randomButton.addEventListener('click',function(){makeRandomView(true)});makeRandomView(false);window.setInterval(function(){if(!stage)return;var slide=stage.closest('.slide');if(slide&&slide.classList.contains('is-active')&&!randomTouched)makeRandomView(false)},3600);
+})();
+</script>
+
+
+<script>
+(function(){
+  'use strict';
+
+  /* Keep the visible lesson numbers aligned after adding scaffold slides. */
+  Array.prototype.slice.call(document.querySelectorAll('.slide')).forEach(function(slide,idx){
+    var n=slide.querySelector('.eyebrow .num');
+    if(n && /^\d+$/.test(n.textContent.trim())) n.textContent=String(idx+1).padStart(2,'0');
+  });
+
+  function flipMove(node,target){
+    var first=node.getBoundingClientRect();
+    target.appendChild(node);
+    var last=node.getBoundingClientRect();
+    var dx=first.left-last.left,dy=first.top-last.top;
+    node.animate([{transform:'translate('+dx+'px,'+dy+'px) scale(.82)',opacity:.45},{transform:'translate(0,0) scale(1)',opacity:1}],{duration:520,easing:'cubic-bezier(.2,.9,.3,1)'});
+  }
+
+  var splitSource=document.getElementById('splitSource'),trainBin=document.getElementById('trainBin'),valBin=document.getElementById('valBin');
+  var splitBtn=document.getElementById('splitBtn'),splitResetBtn=document.getElementById('splitResetBtn'),splitStatus=document.getElementById('splitStatus');
+  var splitCards=splitSource?Array.prototype.slice.call(splitSource.children):[];
+  function splitCardsNow(){
+    if(!splitSource||splitSource.children.length===0)return;
+    var order=[2,7,0,5,9,3,6,1,8,4];
+    order.forEach(function(cardIndex,pos){setTimeout(function(){flipMove(splitCards[cardIndex],pos<8?trainBin:valBin)},pos*90)});
+    setTimeout(function(){splitStatus.textContent='8 cards practise and update the model. 2 different cards check the model.'},950);
+  }
+  function resetSplit(){
+    splitCards.forEach(function(card,pos){setTimeout(function(){flipMove(card,splitSource)},pos*55)});
+    splitStatus.textContent='The groups are separate, but all cards still come from the same original dataset.';
+  }
+  if(splitBtn)splitBtn.addEventListener('click',splitCardsNow);if(splitResetBtn)splitResetBtn.addEventListener('click',resetSplit);
+
+  var decisionTasks=[
+    {q:'Adjust the CNN weights after a wrong guess.',hint:'Choose the dataset whose examples are used for learning.',a:'training',why:'Training examples create the error signal used to update weights.'},
+    {q:'Report val_accuracy at the end of an epoch.',hint:'Choose the dataset used to measure held-out performance.',a:'validation',why:'Validation examples are used to calculate val_accuracy.'},
+    {q:'Apply RandomFlip and RandomRotation.',hint:'Random augmentation should make practice more varied.',a:'training',why:'Augmentation is applied to training inputs, not the validation check.'},
+    {q:'Check whether learning transfers to unseen flowers.',hint:'Which dataset acts like a mock test?',a:'validation',why:'Validation estimates performance on examples not used for updates.'},
+    {q:'Learn from another batch and correct mistakes.',hint:'Which group is allowed to change the model?',a:'training',why:'Only the training process updates the model weights.'}
+  ];
+  var dIndex=0,dAnswered=false,dPrompt=document.getElementById('decisionPrompt'),dHint=document.getElementById('decisionHint'),dCount=document.getElementById('decisionCount'),dFeedback=document.getElementById('decisionFeedback'),dNext=document.getElementById('decisionNext');
+  var dButtons=document.querySelectorAll('#decisionLab [data-choice]');
+  function renderDecision(){if(!dPrompt)return;var t=decisionTasks[dIndex];dPrompt.textContent=t.q;dHint.textContent=t.hint;dCount.textContent='TASK '+(dIndex+1)+' OF '+decisionTasks.length;dFeedback.textContent='Choose Training or Validation.';dAnswered=false;dNext.disabled=true;dNext.textContent=dIndex===decisionTasks.length-1?'Restart game':'Next task →';dButtons.forEach(function(b){b.classList.remove('correct','wrong');b.disabled=false})}
+  dButtons.forEach(function(b){b.addEventListener('click',function(){if(dAnswered)return;var t=decisionTasks[dIndex],choice=b.dataset.choice;if(choice===t.a){b.classList.add('correct');dFeedback.innerHTML='<b>Correct.</b> '+t.why;dAnswered=true;dNext.disabled=false;dButtons.forEach(function(x){x.disabled=true})}else{b.classList.add('wrong');dFeedback.innerHTML='<b>Try again.</b> Remember: training updates; validation measures.';setTimeout(function(){b.classList.remove('wrong')},500)}})});
+  if(dNext)dNext.addEventListener('click',function(){dIndex=dIndex===decisionTasks.length-1?0:dIndex+1;renderDecision()});renderDecision();
+
+  var ratioSlider=document.getElementById('ratioSlider'),ratioTrain=document.getElementById('ratioTrainCount'),ratioVal=document.getElementById('ratioValCount'),ratioFill=document.getElementById('ratioBarFill'),ratioObs=document.getElementById('ratioObservation'),ratioCode=document.getElementById('ratioCode');
+  function updateRatioV2(){if(!ratioSlider)return;var train=parseInt(ratioSlider.value,10),val=100-train;ratioTrain.textContent=train;ratioVal.textContent=val;ratioFill.style.width=train+'%';ratioCode.textContent=(val/100).toFixed(1);var msg=train===90?'90/10 gives more practice images, but the validation check uses fewer examples.':train===70?'70/30 gives a larger validation check, but fewer images remain for learning.':'80/20 is a common balance: enough practice and enough checking.';ratioObs.textContent=msg}
+  if(ratioSlider)ratioSlider.addEventListener('input',updateRatioV2);updateRatioV2();
+
+  var epochSteps=document.querySelectorAll('#epochLab .epoch-step'),epochNext=document.getElementById('epochNext'),epochReset=document.getElementById('epochReset'),epochReadout=document.getElementById('epochReadout'),epochTrain=document.getElementById('epochTrainMeter'),epochVal=document.getElementById('epochValMeter');
+  var epochIndex=0;
+  var epochTexts=['<b>Step 1:</b> the model receives training images.','<b>Step 2:</b> the CNN produces flower guesses.','<b>Step 3:</b> training errors update the model weights.','<b>Step 4:</b> validation images measure the updated model without changing it.'];
+  function renderEpoch(){epochSteps.forEach(function(s,idx){s.classList.toggle('active',idx===epochIndex);s.classList.toggle('done',idx<epochIndex)});epochReadout.innerHTML=epochTexts[epochIndex];epochTrain.textContent=epochIndex<2?'training accuracy: waiting':epochIndex===2?'training accuracy: calculated':'training accuracy: 72%';epochVal.textContent=epochIndex<3?'validation accuracy: waiting':'validation accuracy: 65%';epochNext.textContent=epochIndex===3?'Run next epoch ↻':'Next step →'}
+  if(epochNext)epochNext.addEventListener('click',function(){epochIndex=epochIndex===3?0:epochIndex+1;renderEpoch()});if(epochReset)epochReset.addEventListener('click',function(){epochIndex=0;renderEpoch()});renderEpoch();
+
+  var metricCases={
+    unsure:{sun:51,rose:49,acc:'1',loss:'medium',explain:'The top answer is correct, so accuracy gives one point. The model is only slightly sure, so loss is not as low as Case B.'},
+    sure:{sun:99,rose:1,acc:'1',loss:'very low',explain:'The answer is correct and the model strongly supports the correct label. Accuracy is still one point, but loss becomes lower.'},
+    wrong:{sun:1,rose:99,acc:'0',loss:'very high',explain:'The answer is wrong and the model is extremely confident in that wrong answer. This creates a large loss penalty.'}
+  };
+  var metricButtons=document.querySelectorAll('#metricLab [data-case]'),metricSunBar=document.getElementById('metricSunBar'),metricRoseBar=document.getElementById('metricRoseBar'),metricSunPct=document.getElementById('metricSunPct'),metricRosePct=document.getElementById('metricRosePct'),metricAcc=document.getElementById('metricAccuracy'),metricLoss=document.getElementById('metricLoss'),metricExplain=document.getElementById('metricExplain');
+  function setMetric(key){var c=metricCases[key];metricSunBar.style.width=c.sun+'%';metricRoseBar.style.width=c.rose+'%';metricSunPct.textContent=c.sun+'%';metricRosePct.textContent=c.rose+'%';metricAcc.textContent=c.acc;metricLoss.textContent=c.loss;metricExplain.textContent=c.explain;metricButtons.forEach(function(b){b.classList.toggle('active',b.dataset.case===key)})}
+  metricButtons.forEach(function(b){b.addEventListener('click',function(){setMetric(b.dataset.case)})});if(metricSunBar)setMetric('unsure');
+
+  var memoryViews={same:{cls:'',pct:98,label:'Prediction: sunflower',msg:'The exact training photo looks familiar, so the memorising model scores very highly.'},tilt:{cls:'rotate',pct:44,label:'Prediction: sunflower?',msg:'The flower is still a sunflower, but the unfamiliar angle causes a large confidence drop.'},dark:{cls:'dark',pct:38,label:'Prediction: dandelion?',msg:'The memorising model mistakes the lighting change for a change in class.'},crop:{cls:'zoom',pct:47,label:'Prediction: sunflower?',msg:'Zooming changes the pixels around the flower. The model did not learn enough varied views.'}};
+  var memoryButtons=document.querySelectorAll('#memoryLab [data-view]'),memoryFlower=document.getElementById('memoryTestFlower'),memoryLabel=document.getElementById('memoryLabel'),memoryPct=document.getElementById('memoryPct'),memoryBar=document.getElementById('memoryBar'),memoryMsg=document.getElementById('memoryMessage');
+  function setMemory(key){var v=memoryViews[key];['rotate','dark','zoom'].forEach(function(c){memoryFlower.classList.remove(c)});if(v.cls)memoryFlower.classList.add(v.cls);memoryLabel.textContent=v.label;memoryPct.textContent=v.pct+'% confidence';memoryBar.style.width=v.pct+'%';memoryBar.style.background=v.pct<60?'var(--predict)':'var(--signal)';memoryMsg.textContent=v.msg;memoryButtons.forEach(function(b){b.classList.toggle('active',b.dataset.view===key)})}
+  memoryButtons.forEach(function(b){b.addEventListener('click',function(){setMemory(b.dataset.view)})});if(memoryFlower)setMemory('same');
+
+  var trainAcc=[45,60,72,82,89,94,97,98,99,99],valAcc=[43,55,64,67,65,63,62,61,62,63];
+  var overSlider=document.getElementById('overfitSlider'),overEpoch=document.getElementById('overfitEpoch'),overStatus=document.getElementById('overfitStatus'),overTrainPath=document.getElementById('overfitTrainPath'),overValPath=document.getElementById('overfitValPath'),overTrainMarker=document.getElementById('overfitTrainMarker'),overValMarker=document.getElementById('overfitValMarker'),overGap=document.getElementById('overfitGapLine'),overTrainValue=document.getElementById('overfitTrainValue'),overValValue=document.getElementById('overfitValValue'),overPlay=document.getElementById('overfitPlay');
+  var overTimer=null;
+  function ox(idx){return 50+(440/9)*idx}function oy(val){return 250-((val-40)/60)*220}
+  function pathFor(arr,last){var d='';for(var j=0;j<=last;j++)d+=(j===0?'M':' L')+ox(j).toFixed(1)+' '+oy(arr[j]).toFixed(1);return d}
+  function updateOverfit(){if(!overSlider)return;var idx=parseInt(overSlider.value,10)-1,x=ox(idx),ty=oy(trainAcc[idx]),vy=oy(valAcc[idx]);overEpoch.textContent=idx+1;overTrainPath.setAttribute('d',pathFor(trainAcc,idx));overValPath.setAttribute('d',pathFor(valAcc,idx));overTrainMarker.setAttribute('cx',x);overTrainMarker.setAttribute('cy',ty);overValMarker.setAttribute('cx',x);overValMarker.setAttribute('cy',vy);overGap.setAttribute('x1',x);overGap.setAttribute('x2',x);overGap.setAttribute('y1',ty);overGap.setAttribute('y2',vy);overTrainValue.textContent=trainAcc[idx]+'%';overValValue.textContent=valAcc[idx]+'%';var txt=idx<3?'<b>Learning:</b> both lines improve. The model is learning useful flower clues.':idx===3?'<b>Best validation so far:</b> the check result has reached its peak in this example.':'<b>Overfitting grows:</b> training keeps improving, but validation no longer improves. The gap becomes larger.';overStatus.innerHTML=txt}
+  if(overSlider)overSlider.addEventListener('input',updateOverfit);if(overPlay)overPlay.addEventListener('click',function(){if(overTimer){clearInterval(overTimer);overTimer=null;overPlay.textContent='▶ Play epochs';return}overSlider.value=1;updateOverfit();overPlay.textContent='■ Pause';overTimer=setInterval(function(){var n=parseInt(overSlider.value,10);if(n>=10){clearInterval(overTimer);overTimer=null;overPlay.textContent='▶ Play again';return}overSlider.value=n+1;updateOverfit()},700)});updateOverfit();
+
+  var helperRow=document.getElementById('helperRow'),dropRoundBtn=document.getElementById('dropoutRoundBtn'),dropRoundText=document.getElementById('dropoutRoundText'),round=0;
+  function dropoutRound(){if(!helperRow)return;round++;var helpers=Array.prototype.slice.call(helperRow.children);helpers.forEach(function(h){h.classList.remove('off')});var first=round%helpers.length,second=(round*3+1)%helpers.length;helpers[first].classList.add('off');if(second!==first)helpers[second].classList.add('off');dropRoundText.textContent='Round '+round+': '+(second===first?'1 helper rests.':'2 helpers rest.')+' The others must still solve the task.'}
+  if(dropRoundBtn)dropRoundBtn.addEventListener('click',dropoutRound);
+
+  var dropSlider=document.getElementById('dropoutRateSlider'),dropRateText=document.getElementById('dropoutRateText'),dropNetwork=document.getElementById('dropoutNetwork'),dropMessage=document.getElementById('dropoutLabMessage'),dropRefresh=document.getElementById('dropoutRefresh'),dropModeButtons=document.querySelectorAll('#dropoutLabV2 [data-mode]'),dropMode='training',dropSeed=1;
+  function updateDropoutLab(){if(!dropNetwork)return;var nodes=Array.prototype.slice.call(dropNetwork.querySelectorAll('i')),rate=parseFloat(dropSlider.value);dropRateText.textContent=rate.toFixed(1);nodes.forEach(function(n){n.classList.remove('off')});if(dropMode==='training'){var count=Math.round(rate*nodes.length),available=nodes.map(function(_,idx){return idx});for(var k=0;k<count;k++){var pick=(dropSeed*7+k*11)%available.length,nIndex=available.splice(pick,1)[0];nodes[nIndex].classList.add('off')}dropMessage.textContent='Training mode: about '+count+' of '+nodes.length+' activations are temporarily off for this pass.'}else{dropMessage.textContent='Prediction mode: all activations are available. Dropout is inactive.'}dropModeButtons.forEach(function(b){b.classList.toggle('active',b.dataset.mode===dropMode)})}
+  if(dropSlider)dropSlider.addEventListener('input',updateDropoutLab);if(dropRefresh)dropRefresh.addEventListener('click',function(){dropSeed++;updateDropoutLab()});dropModeButtons.forEach(function(b){b.addEventListener('click',function(){dropMode=b.dataset.mode;updateDropoutLab()})});updateDropoutLab();
+
+  var generalData={
+    baseline:{upright:96,tilt:45,dark:38,zoom:52},
+    improved:{upright:86,tilt:79,dark:74,zoom:77}
+  };
+  var generalModel='baseline',generalView='upright',generalButtons=document.querySelectorAll('#generalLab button'),generalFlower=document.getElementById('generalFlower'),generalTitle=document.getElementById('generalTitle'),generalViewText=document.getElementById('generalViewText'),generalScore=document.getElementById('generalScore'),generalBar=document.getElementById('generalBar'),generalMessage=document.getElementById('generalMessage');
+  function updateGeneral(){if(!generalFlower)return;['rotate','dark','zoom'].forEach(function(c){generalFlower.classList.remove(c)});if(generalView==='tilt')generalFlower.classList.add('rotate');if(generalView==='dark')generalFlower.classList.add('dark');if(generalView==='zoom')generalFlower.classList.add('zoom');var score=generalData[generalModel][generalView];generalTitle.textContent=generalModel==='baseline'?'Baseline model':'Augmentation + dropout model';generalViewText.textContent='Testing a '+(generalView==='upright'?'familiar upright':generalView)+' flower photo.';generalScore.textContent=score+'%';generalScore.classList.toggle('low',score<60);generalBar.style.width=score+'%';generalBar.style.background=score<60?'var(--predict)':'var(--signal)';if(generalView==='upright'&&generalModel==='baseline')generalMessage.textContent='The familiar upright view is easy. Now try a tilted, darker or zoomed photo.';else if(generalModel==='baseline')generalMessage.textContent='The baseline learned the neat training views too closely, so confidence drops on this changed view.';else generalMessage.textContent='Varied training views and dropout help the learned clues transfer to this unseen condition.';generalButtons.forEach(function(b){if(b.dataset.model)b.classList.toggle('active',b.dataset.model===generalModel);if(b.dataset.view)b.classList.toggle('active',b.dataset.view===generalView)})}
+  generalButtons.forEach(function(b){b.addEventListener('click',function(){if(b.dataset.model)generalModel=b.dataset.model;if(b.dataset.view)generalView=b.dataset.view;updateGeneral()})});updateGeneral();
+
+  /* Stop slide swipes while learners operate a lab control. */
+  document.querySelectorAll('.split-lab,.decision-lab,.ratio-lab,.epoch-lab,.metric-lab,.memory-lab,.overfit-lab,.dropout-story,.dropout-lab,.generalisation-lab').forEach(function(n){n.addEventListener('touchstart',function(e){e.stopPropagation()},{passive:true})});
 })();
 </script>
 

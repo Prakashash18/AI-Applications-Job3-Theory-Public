@@ -87,3 +87,21 @@ The deck retains the supplied Job Sheet sequence and terminology:
 ## Practical note
 
 The Job Sheet screenshot contains `test_url = "https://.zip"`, which is a placeholder rather than a usable image address. Replace it with a valid flower-image URL or a local file path during the practical.
+
+
+## Interactive V2 additions
+
+The second half of the lesson now uses interactive concept laboratories rather than relying mainly on explanation slides:
+
+- animated 80/20 dataset split
+- Training-or-Validation decision game
+- adjustable 70/30, 80/20 and 90/10 ratio visualiser
+- one-epoch step-through animation
+- interactive accuracy-versus-loss examples
+- overfitting memorisation demonstration
+- epoch-by-epoch overfitting simulator
+- dropout helper-team animation
+- adjustable dropout rate and training/prediction modes
+- baseline-versus-improved generalisation challenge
+
+All interactions run locally in the browser with vanilla HTML, CSS and JavaScript.
